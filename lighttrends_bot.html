@@ -189,6 +189,8 @@ textarea{width:100%;padding:16px;border:none;font-size:13px;background:white;col
         <button class="btn-sm btn-dark" onclick="exportNewsletter()">⬇ Exportar HTML</button>
         <button class="btn-sm btn-outline" onclick="exportGalleryJSON()">📁 Publicar en galería</button>
         <button class="btn-sm btn-outline" onclick="publishAllToInstagram()">📱 Publicar en Instagram</button>
+        <button class="btn-sm btn-outline" onclick="publishAllToLinkedIn()">💼 Publicar en LinkedIn</button>
+        <button class="btn-sm btn-outline" onclick="publishAllToPinterest()">📌 Publicar en Pinterest</button>
       </div>
       <div class="nl-frame">
         <div class="nl-frame-bar">
@@ -217,6 +219,8 @@ textarea{width:100%;padding:16px;border:none;font-size:13px;background:white;col
 <script>
 var CLOUD = 'dl8onsu6w';
 var INSTAGRAM_WEBHOOK = 'https://hook.eu1.make.com/55rnw4xxgpgsxckyo1f3rv9tvio652l6';
+var LINKEDIN_WEBHOOK = 'https://hook.eu1.make.com/lrnvuu1ibb7hdwonmo1lvg8u9rmcs6u2';
+var PINTEREST_WEBHOOK = 'https://hook.eu1.make.com/9yydm4swz3w1nds8kujpr45uw6mknoc1';
 var PRESET = 'lighttrends';
 
 var DEMO = {
@@ -601,6 +605,71 @@ async function publishAllToInstagram() {
     if (i < withImage.length - 1) await new Promise(function(r) { setTimeout(r, 3000); });
   }
   showToast(ok + ' post' + (ok > 1 ? 's' : '') + ' publicado' + (ok > 1 ? 's' : '') + ' en Instagram ✓');
+}
+
+async function publishAllToLinkedIn() {
+  var approved = reportData.posts.filter(function(_, i) { return postStates[i] === 'approved'; });
+  if (approved.length === 0) { showToast('Aprueba posts primero'); return; }
+  var withImage = approved.filter(function(p) { return p.image; });
+  if (withImage.length === 0) { showToast('Ningún post aprobado tiene imagen'); return; }
+
+  showToast('Publicando en LinkedIn...');
+  var ok = 0;
+  for (var i = 0; i < withImage.length; i++) {
+    var p = withImage[i];
+    var caption = '';
+    if (p.maker) caption += p.maker + '\n';
+    if (p.name) caption += p.name + '\n';
+    if (p.designer) caption += 'Design: ' + p.designer + '\n';
+    caption += '\n' + (p.description || '');
+    caption += '\n\n#lightreference #lighting #iluminacion #diseño #interiordesign';
+
+    var res = await fetch(LINKEDIN_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        image_url: p.image,
+        caption: caption,
+        name: p.name,
+        maker: p.maker,
+        designer: p.designer
+      })
+    });
+    if (res.ok) ok++;
+    if (i < withImage.length - 1) await new Promise(function(r) { setTimeout(r, 3000); });
+  }
+  showToast(ok + ' post' + (ok > 1 ? 's' : '') + ' publicado' + (ok > 1 ? 's' : '') + ' en LinkedIn ✓');
+}
+
+async function publishAllToPinterest() {
+  var approved = reportData.posts.filter(function(_, i) { return postStates[i] === 'approved'; });
+  if (approved.length === 0) { showToast('Aprueba posts primero'); return; }
+  var withImage = approved.filter(function(p) { return p.image; });
+  if (withImage.length === 0) { showToast('Ningún post aprobado tiene imagen'); return; }
+
+  showToast('Publicando en Pinterest...');
+  var ok = 0;
+  for (var i = 0; i < withImage.length; i++) {
+    var p = withImage[i];
+    var caption = (p.description || '');
+    caption += '\n\n#lightreference #lighting #iluminacion #diseño #interiordesign';
+
+    var res = await fetch(PINTEREST_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        image_url: p.image,
+        name: p.name || '',
+        caption: caption,
+        link: p.link || '',
+        maker: p.maker || '',
+        designer: p.designer || ''
+      })
+    });
+    if (res.ok) ok++;
+    if (i < withImage.length - 1) await new Promise(function(r) { setTimeout(r, 3000); });
+  }
+  showToast(ok + ' pin' + (ok > 1 ? 's' : '') + ' publicado' + (ok > 1 ? 's' : '') + ' en Pinterest ✓');
 }
 
 function exportGalleryJSON() {
