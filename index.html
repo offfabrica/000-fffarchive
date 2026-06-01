@@ -1,189 +1,191 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Light Reference</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<title>000-FFFarchive</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0e0e0c;
-  --bg2:#161614;
-  --ink:#f4f2ed;
-  --ink-dim:rgba(244,242,237,0.45);
-  --ink-faint:rgba(244,242,237,0.15);
-  --green:#7ec8a4;
-  --border:rgba(244,242,237,0.08);
-  --card:#1a1a18;
+  --bg:#ffffff;
+  --ink:#0a0a0a;
+  --ink-mid:#555;
+  --ink-light:#999;
+  --border:#e8e8e8;
+  --border-strong:#1a1a1a;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 
 /* HEADER */
-.header{padding:2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;background:rgba(14,14,12,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-mark{width:32px;height:32px;border:1px solid var(--ink-faint);border-radius:8px;display:flex;align-items:center;justify-content:center}
-.logo-name{font-size:14px;font-weight:500;letter-spacing:0.04em;color:var(--ink)}
-.logo-sub{font-size:11px;color:var(--ink-dim);letter-spacing:0.06em}
-.header-nav{display:flex;align-items:center;gap:20px}
-.nav-link{font-size:13px;color:var(--ink-dim);text-decoration:none;transition:color 0.15s}
+.header{padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:white;z-index:50}
+.logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;letter-spacing:-0.02em;color:var(--ink);text-decoration:none}
+.header-nav{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:12px;color:var(--ink-light);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.15s}
 .nav-link:hover{color:var(--ink)}
-.subscribe-btn{font-size:12px;padding:7px 16px;border-radius:20px;border:0.5px solid var(--ink-faint);background:transparent;color:var(--ink);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.subscribe-btn:hover{background:var(--ink);color:var(--bg)}
+.subscribe-btn{font-size:11px;padding:6px 16px;border-radius:2px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em;text-transform:uppercase;transition:all 0.15s}
+.subscribe-btn:hover{background:var(--ink);color:white}
 
 /* HERO */
-.hero{padding:5rem 2rem 4rem;max-width:1200px;margin:0 auto}
-.hero-eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(48px,8vw,96px);font-weight:400;line-height:0.95;letter-spacing:-0.02em;margin-bottom:24px}
-.hero-title em{font-style:italic;color:var(--ink-dim)}
-.hero-desc{font-size:16px;color:var(--ink-dim);line-height:1.7;max-width:480px;margin-bottom:2.5rem}
-.hero-stats{display:flex;gap:2rem}
-.stat{border-left:1px solid var(--ink-faint);padding-left:1rem}
-.stat-num{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;line-height:1}
-.stat-label{font-size:11px;color:var(--ink-dim);margin-top:4px;letter-spacing:0.04em}
+.hero{padding:5rem 2rem 4rem;max-width:1280px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end}
+.hero-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(48px,7vw,88px);line-height:0.92;letter-spacing:-0.04em;margin-bottom:0}
+.hero-title em{font-style:italic;font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(52px,7.5vw,96px)}
+.hero-right{padding-bottom:8px}
+.hero-desc{font-size:14px;color:var(--ink-mid);line-height:1.7;margin-bottom:2rem;max-width:360px}
+.hero-stats{display:flex;gap:2.5rem}
+.stat-num{font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1}
+.stat-label{font-size:11px;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-right{padding-bottom:0}}
 
-/* FILTERS */
-.filters{max-width:1200px;margin:0 auto;padding:0 2rem 2rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.filter-label{font-size:11px;color:var(--ink-dim);letter-spacing:0.08em;text-transform:uppercase;margin-right:4px}
-.filter-btn{font-size:12px;padding:6px 14px;border-radius:20px;border:0.5px solid var(--ink-faint);background:transparent;color:var(--ink-dim);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.filter-btn:hover{border-color:var(--ink);color:var(--ink)}
-.filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* TOOLBAR */
+.toolbar{max-width:1280px;margin:0 auto;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.filters{display:flex;gap:0}
+.filter-btn{font-size:11px;padding:7px 16px;border:1px solid var(--border);border-right:none;background:white;color:var(--ink-light);cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.15s}
+.filter-btn:first-child{border-radius:2px 0 0 2px}
+.filter-btn:last-child{border-right:1px solid var(--border);border-radius:0 2px 2px 0}
+.filter-btn:hover{background:#f5f5f5;color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:white;border-color:var(--ink)}
+.toolbar-right{font-size:11px;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.06em}
 
-/* GALLERY */
-.gallery-wrap{max-width:1200px;margin:0 auto;padding:0 2rem 4rem}
-.gallery{columns:3;column-gap:12px}
-@media(max-width:900px){.gallery{columns:2}}
-@media(max-width:560px){.gallery{columns:1}}
-.gallery-item{break-inside:avoid;margin-bottom:12px;position:relative;border-radius:10px;overflow:hidden;background:var(--card);cursor:pointer;border:0.5px solid var(--border);transition:all 0.3s}
-.gallery-item:hover{border-color:rgba(244,242,237,0.25);transform:translateY(-2px)}
-.gallery-item img{width:100%;display:block;transition:transform 0.4s}
-.gallery-item:hover img{transform:scale(1.03)}
-.gallery-item-info{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent, rgba(0,0,0,0.85));opacity:0;transition:opacity 0.25s;transform:translateY(4px);transition:all 0.25s}
-.gallery-item:hover .gallery-item-info{opacity:1;transform:translateY(0)}
-.gallery-item-name{font-size:14px;font-weight:500;margin-bottom:2px}
-.gallery-item-maker{font-size:12px;color:rgba(255,255,255,0.6)}
-.gallery-item-cat{position:absolute;top:10px;left:10px;font-size:10px;font-weight:500;padding:3px 8px;border-radius:20px;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);color:rgba(255,255,255,0.8)}
+/* GRID */
+.gallery-wrap{max-width:1280px;margin:0 auto;padding:0 2rem 6rem}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+@media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}}
 
-/* LOADING */
-.loading{text-align:center;padding:4rem 2rem;color:var(--ink-dim)}
-.loading-spinner{width:32px;height:32px;border:1.5px solid var(--ink-faint);border-top-color:var(--ink-dim);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* EMPTY */
-.empty{text-align:center;padding:5rem 2rem;color:var(--ink-dim)}
-.empty-title{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin:16px 0 8px}
+.gallery-item{background:white;cursor:pointer;position:relative;overflow:hidden}
+.gallery-item-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:#f5f5f5;display:flex;align-items:center;justify-content:center}
+.gallery-item-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.gallery-item:hover .gallery-item-img img{transform:scale(1.04)}
+.gallery-item-ph{font-size:32px;color:#ccc}
+.gallery-item-body{padding:14px 14px 20px}
+.gallery-item-cat{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:5px}
+.gallery-item-name{font-size:13px;font-weight:600;letter-spacing:-0.01em;margin-bottom:2px}
+.gallery-item-maker{font-size:11px;color:var(--ink-mid)}
 
 /* LIGHTBOX */
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;padding:2rem}
+.lightbox{position:fixed;inset:0;background:white;z-index:100;display:grid;grid-template-columns:1fr 1fr;opacity:0;pointer-events:none;transition:opacity 0.25s}
 .lightbox.open{opacity:1;pointer-events:all}
-.lightbox-inner{max-width:900px;width:100%;display:flex;gap:2rem;align-items:flex-start}
-.lightbox-img{flex:1;border-radius:12px;overflow:hidden;max-height:80vh}
-.lightbox-img img{width:100%;height:100%;object-fit:contain;display:block}
-.lightbox-info{width:260px;flex-shrink:0}
-.lightbox-cat{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
-.lightbox-name{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;line-height:1.1;margin-bottom:6px}
-.lightbox-maker{font-size:14px;color:var(--ink-dim);margin-bottom:4px}
-.lightbox-designer{font-size:12px;color:rgba(244,242,237,0.3);margin-bottom:20px}
-.lightbox-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--ink-dim);font-size:24px;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all 0.15s}
-.lightbox-close:hover{background:var(--ink-faint);color:var(--ink)}
-@media(max-width:700px){.lightbox-inner{flex-direction:column}.lightbox-info{width:100%}}
+.lb-img-wrap{background:#f5f5f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb-img-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+.lb-info{padding:3rem;display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--border);overflow-y:auto}
+.lb-top{flex:1}
+.lb-cat{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:16px}
+.lb-name{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(28px,3vw,48px);letter-spacing:-0.03em;line-height:1;margin-bottom:10px}
+.lb-maker{font-size:14px;color:var(--ink-mid);margin-bottom:4px}
+.lb-designer{font-size:12px;color:var(--ink-light);margin-bottom:2rem}
+.lb-desc{font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:2rem}
+.lb-link{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity 0.15s}
+.lb-link:hover{opacity:0.5}
+.lb-close{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;transition:color 0.15s}
+.lb-close:hover{color:var(--ink)}
+@media(max-width:768px){.lightbox{grid-template-columns:1fr;grid-template-rows:1fr auto}.lb-img-wrap{max-height:60vh}.lb-info{padding:1.5rem}}
 
 /* NEWSLETTER MODAL */
-.nl-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(4px)}
+.nl-overlay{position:fixed;inset:0;background:rgba(255,255,255,0.9);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(8px)}
 .nl-overlay.open{opacity:1;pointer-events:all}
-.nl-modal{background:var(--bg2);border:0.5px solid var(--border);border-radius:16px;padding:2.5rem;width:90%;max-width:440px;position:relative}
-.nl-modal-eyebrow{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
-.nl-modal-title{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;line-height:1.1;margin-bottom:10px}
-.nl-modal-desc{font-size:13px;color:var(--ink-dim);line-height:1.6;margin-bottom:1.5rem}
-.nl-form{display:flex;gap:8px}
-.nl-input{flex:1;padding:11px 14px;border:0.5px solid var(--border);border-radius:8px;background:var(--bg);color:var(--ink);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.15s}
-.nl-input:focus{border-color:rgba(244,242,237,0.3)}
-.nl-submit{padding:11px 20px;border-radius:8px;border:none;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:opacity 0.15s}
-.nl-submit:hover{opacity:0.85}
-.nl-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--ink-dim);font-size:20px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all 0.15s}
-.nl-close:hover{background:var(--ink-faint);color:var(--ink)}
+.nl-modal{background:white;border:1px solid var(--border-strong);padding:3rem;width:90%;max-width:460px;position:relative}
+.nl-modal-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:16px}
+.nl-modal-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:32px;letter-spacing:-0.03em;line-height:1;margin-bottom:12px}
+.nl-modal-desc{font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:2rem}
+.nl-form{display:flex;gap:0;border:1px solid var(--border-strong)}
+.nl-input{flex:1;padding:12px 14px;border:none;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:white}
+.nl-submit{padding:12px 20px;border:none;border-left:1px solid var(--border-strong);background:var(--ink);color:white;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:opacity 0.15s}
+.nl-submit:hover{opacity:0.8}
+.nl-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* LOADING */
+.loading{grid-column:1/-1;text-align:center;padding:6rem 2rem;color:var(--ink-light)}
+.loading-bar{width:40px;height:1px;background:var(--ink-light);margin:0 auto 16px;animation:loadbar 1s ease-in-out infinite alternate}
+@keyframes loadbar{from{width:20px;opacity:0.3}to{width:60px;opacity:1}}
+
+/* EMPTY */
+.empty{grid-column:1/-1;text-align:center;padding:6rem 2rem}
+.empty-title{font-weight:700;font-size:20px;letter-spacing:-0.02em;margin-bottom:8px}
+.empty-sub{font-size:13px;color:var(--ink-light);line-height:1.6}
 
 /* FOOTER */
-.footer{border-top:0.5px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--ink-dim)}
-.footer strong{color:var(--ink)}
+.footer{border-top:1px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:11px;font-weight:700;letter-spacing:0.02em}
+.footer-right{font-size:11px;color:var(--ink-light)}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;padding:11px 22px;border-radius:8px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:999}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;font-size:11px;letter-spacing:0.04em;padding:10px 20px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:999}
 .toast.show{opacity:1}
 </style>
 </head>
 <body>
 
 <header class="header">
-  <a href="#" class="logo">
-    <div class="logo-mark">
-      <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M10 12v5M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M4 8H2M18 8h-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div>
-      <div class="logo-name">Light Reference</div>
-      <div class="logo-sub">Archivo de iluminación</div>
-    </div>
-  </a>
+  <a href="#" class="logo">000-FFFarchive</a>
   <nav class="header-nav">
-    <a href="#galeria" class="nav-link">Galería</a>
+    <a href="#gallery" class="nav-link">Archive</a>
     <a href="lighttrends_bot.html" class="nav-link">Newsletter</a>
-    <a href="archivo.html" class="nav-link">Archivo</a>
-    <button class="subscribe-btn" onclick="openNewsletter()">Suscribirse</button>
+    <a href="archivo.html" class="nav-link">Issues</a>
+    <button class="subscribe-btn" onclick="openNewsletter()">Subscribe</button>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-eyebrow">Archivo de referencia · Iluminación contemporánea</div>
-  <h1 class="hero-title">Light<br><em>Reference</em></h1>
-  <p class="hero-desc">Archivo visual de luminarias contemporáneas. Diseño, fabricantes y tendencias del sector de la iluminación.</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num" id="stat-images">—</div>
-      <div class="stat-label">Imágenes</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="stat-brands">—</div>
-      <div class="stat-label">Fabricantes</div>
+  <div class="hero-inner">
+    <h1 class="hero-title">000-FFF<br><em>archive</em></h1>
+    <div class="hero-right">
+      <p class="hero-desc">Visual archive of contemporary lighting. Products, designers and trends from the lighting industry.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num" id="stat-images">—</div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div>
+          <div class="stat-num" id="stat-brands">—</div>
+          <div class="stat-label">Brands</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="filters" id="galeria">
-  <span class="filter-label">Filtrar</span>
-  <button class="filter-btn active" onclick="filterBy('all', this)">Todos</button>
-  <button class="filter-btn" onclick="filterBy('interior', this)">Interior</button>
-  <button class="filter-btn" onclick="filterBy('exterior', this)">Exterior</button>
-  <button class="filter-btn" onclick="filterBy('arquitectonica', this)">Arquitectónica</button>
+<div class="toolbar" id="gallery">
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterBy('all',this)">All</button>
+    <button class="filter-btn" onclick="filterBy('interior',this)">Interior</button>
+    <button class="filter-btn" onclick="filterBy('exterior',this)">Exterior</button>
+    <button class="filter-btn" onclick="filterBy('arquitectonica',this)">Architectural</button>
+  </div>
+  <div class="toolbar-right" id="count-label"></div>
 </div>
 
 <div class="gallery-wrap">
-  <div id="gallery-container">
+  <div class="gallery" id="gallery-grid">
     <div class="loading">
-      <div class="loading-spinner"></div>
-      <div>Cargando archivo...</div>
+      <div class="loading-bar"></div>
+      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase">Loading archive</div>
     </div>
   </div>
 </div>
 
 <footer class="footer">
-  <strong>Light Reference</strong> · Archivo de iluminación contemporánea · <a href="lighttrends_bot.html" style="color:inherit">Newsletter</a>
+  <div class="footer-left">000-FFFarchive</div>
+  <div class="footer-right">Lighting archive · <a href="lighttrends_bot.html" style="color:inherit">Newsletter</a></div>
 </footer>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightbox()">×</button>
-  <div class="lightbox-inner">
-    <div class="lightbox-img"><img id="lb-img" src="" alt=""/></div>
-    <div class="lightbox-info">
-      <div class="lightbox-cat" id="lb-cat"></div>
-      <div class="lightbox-name" id="lb-name"></div>
-      <div class="lightbox-maker" id="lb-maker"></div>
-      <div class="lightbox-designer" id="lb-designer"></div>
+<div class="lightbox" id="lightbox">
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt=""/></div>
+  <div class="lb-info">
+    <div class="lb-top">
+      <div class="lb-cat" id="lb-cat"></div>
+      <div class="lb-name" id="lb-name"></div>
+      <div class="lb-maker" id="lb-maker"></div>
+      <div class="lb-designer" id="lb-designer"></div>
+      <div class="lb-desc" id="lb-desc"></div>
+      <a class="lb-link" id="lb-link" href="#" target="_blank">View product →</a>
+    </div>
+    <div>
+      <button class="lb-close" onclick="closeLightbox()">Close ×</button>
     </div>
   </div>
 </div>
@@ -191,13 +193,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 <!-- Newsletter modal -->
 <div class="nl-overlay" id="nl-overlay" onclick="closeNLModal(event)">
   <div class="nl-modal">
-    <button class="nl-close" onclick="closeNLModal()">×</button>
-    <div class="nl-modal-eyebrow">Light Reference · Newsletter</div>
-    <div class="nl-modal-title">Tendencias en<br>iluminación</div>
-    <div class="nl-modal-desc">Recibe cada semana las novedades más relevantes del sector de la iluminación.</div>
+    <button class="nl-close" onclick="closeNLModal()">Close</button>
+    <div class="nl-modal-label">000-FFFarchive · Newsletter</div>
+    <div class="nl-modal-title">Weekly lighting trends</div>
+    <div class="nl-modal-desc">Receive the most relevant lighting news every week — new products, designers and industry trends.</div>
     <div class="nl-form">
-      <input class="nl-input" id="nl-email" type="email" placeholder="tu@email.com"/>
-      <button class="nl-submit" onclick="subscribeNewsletter()">Suscribirse</button>
+      <input class="nl-input" id="nl-email" type="email" placeholder="your@email.com"/>
+      <button class="nl-submit" onclick="subscribeNewsletter()">Subscribe</button>
     </div>
   </div>
 </div>
@@ -205,125 +207,60 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 <div class="toast" id="toast"></div>
 
 <script>
-var CLOUD_NAME = 'dl8onsu6w';
 var allImages = [];
 var currentFilter = 'all';
 
-// Cloudinary folders to fetch
-var FOLDERS = ['marset', 'flos', 'artemide', 'foscarini', 'vibia'];
-
-// Category mapping based on folder/tags
-function getCategoryFromPublicId(publicId) {
-  var id = publicId.toLowerCase();
-  if (id.indexOf('exter') >= 0 || id.indexOf('jaima') >= 0 || id.indexOf('outdoor') >= 0) return 'exterior';
-  if (id.indexOf('arquit') >= 0 || id.indexOf('circuit') >= 0 || id.indexOf('plusminus') >= 0 || id.indexOf('ambrosia') >= 0 || id.indexOf('fris') >= 0) return 'arquitectonica';
-  return 'interior';
-}
-
-function getMakerFromFolder(folder) {
-  return folder.charAt(0).toUpperCase() + folder.slice(1);
-}
-
-function parsePublicId(publicId) {
-  // Format: lighttrends/maker/maker-product-designer
-  var parts = publicId.split('/');
-  var filename = parts[parts.length - 1];
-  var segments = filename.split('-');
-  var maker = segments[0] || '';
-  var name = segments.slice(1, -1).join(' ') || segments[1] || '';
-  var designer = segments[segments.length - 1] || '';
-  // Capitalize
-  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
-  return {
-    maker: cap(maker),
-    name: segments.length > 1 ? segments.slice(1, segments.length > 2 ? -1 : undefined).map(cap).join(' ') : cap(maker),
-    designer: segments.length > 2 ? cap(designer) : ''
-  };
-}
-
-async function fetchCloudinaryFolder(folder) {
-  try {
-    var url = 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/list/lighttrends:' + folder + '.json';
-    var res = await fetch(url);
-    if (!res.ok) return [];
-    var data = await res.json();
-    return (data.resources || []).map(function(r) {
-      var info = parsePublicId(r.public_id);
-      return {
-        url: 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/upload/f_auto,q_auto,w_600/' + r.public_id,
-        urlFull: 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/upload/f_auto,q_auto/' + r.public_id,
-        publicId: r.public_id,
-        maker: info.maker || getMakerFromFolder(folder),
-        name: info.name,
-        designer: info.designer,
-        category: getCategoryFromPublicId(r.public_id),
-        folder: folder
-      };
-    });
-  } catch(e) {
-    console.warn('Error loading folder', folder, e.message);
-    return [];
-  }
-}
-
 async function loadGallery() {
-  var container = document.getElementById('gallery-container');
   try {
     var res = await fetch('gallery.json?v=' + Date.now());
-    if (!res.ok) throw new Error('No gallery.json found');
+    if (!res.ok) throw new Error('No gallery.json');
     var data = await res.json();
     allImages = data.map(function(item) {
       return {
         url: item.url,
-        urlFull: item.url,
-        publicId: item.publicId || item.url,
         name: item.name || '',
         maker: item.maker || '',
         designer: item.designer || '',
+        description: item.description || '',
         category: item.category || 'interior',
+        link: item.link || '',
         date: item.date || ''
       };
     });
   } catch(e) {
-    console.warn('gallery.json not found:', e.message);
     allImages = [];
   }
-
-  // Update stats
   var brands = new Set(allImages.map(function(i) { return i.maker; }));
-  document.getElementById('stat-images').textContent = allImages.length;
-  document.getElementById('stat-brands').textContent = brands.size;
-
+  document.getElementById('stat-images').textContent = allImages.length || '0';
+  document.getElementById('stat-brands').textContent = brands.size || '0';
   renderGallery();
 }
 
 function renderGallery() {
-  var container = document.getElementById('gallery-container');
+  var grid = document.getElementById('gallery-grid');
   var filtered = currentFilter === 'all' ? allImages : allImages.filter(function(i) { return i.category === currentFilter; });
+  window._filtered = filtered;
 
-  if (filtered.length === 0 && allImages.length === 0) {
-    container.innerHTML = '<div class="empty"><div style="font-size:48px">💡</div><div class="empty-title">Archivo vacío</div><div style="font-size:14px;color:var(--ink-dim);margin-top:8px">Las imágenes aparecerán aquí cuando las guardes desde la app newsletter.</div></div>';
-    return;
-  }
+  var countEl = document.getElementById('count-label');
+  countEl.textContent = filtered.length + ' product' + (filtered.length !== 1 ? 's' : '');
 
   if (filtered.length === 0) {
-    container.innerHTML = '<div class="empty"><div class="empty-title">Sin resultados</div><div style="font-size:14px;color:var(--ink-dim);margin-top:8px">No hay imágenes en esta categoría todavía.</div></div>';
+    grid.innerHTML = '<div class="empty"><div class="empty-title">No products yet</div><div class="empty-sub">Images will appear here once added from the newsletter app.</div></div>';
     return;
   }
 
-  container.innerHTML = '<div class="gallery">' + filtered.map(function(item, i) {
-    var catLabel = item.category === 'exterior' ? 'Exterior' : item.category === 'arquitectonica' ? 'Arquitectónica' : 'Interior';
+  grid.innerHTML = filtered.map(function(item, i) {
+    var catLabel = item.category === 'exterior' ? 'Exterior' : item.category === 'arquitectonica' ? 'Architectural' : 'Interior';
     return '<div class="gallery-item" onclick="openLightbox(' + i + ')">' +
-      '<span class="gallery-item-cat">' + catLabel + '</span>' +
-      '<img src="' + item.url + '" alt="' + item.name + '" loading="lazy"/>' +
-      '<div class="gallery-item-info">' +
+      '<div class="gallery-item-img">' +
+      (item.url ? '<img src="' + item.url + '" alt="' + item.name + '" loading="lazy"/>' : '<div class="gallery-item-ph">💡</div>') +
+      '</div>' +
+      '<div class="gallery-item-body">' +
+      '<div class="gallery-item-cat">' + catLabel + '</div>' +
       '<div class="gallery-item-name">' + item.name + '</div>' +
       '<div class="gallery-item-maker">' + item.maker + '</div>' +
       '</div></div>';
-  }).join('') + '</div>';
-
-  // Store filtered for lightbox
-  window._filtered = filtered;
+  }).join('');
 }
 
 function filterBy(cat, btn) {
@@ -337,21 +274,27 @@ function openLightbox(i) {
   var items = window._filtered || allImages;
   var item = items[i];
   if (!item) return;
-  document.getElementById('lb-img').src = item.urlFull;
+  document.getElementById('lb-img').src = item.url;
   document.getElementById('lb-name').textContent = item.name;
   document.getElementById('lb-maker').textContent = item.maker;
-  document.getElementById('lb-designer').textContent = item.designer ? 'Diseño: ' + item.designer : '';
-  document.getElementById('lb-cat').textContent = item.category === 'exterior' ? 'Exterior' : item.category === 'arquitectonica' ? 'Arquitectónica' : 'Interior';
+  document.getElementById('lb-designer').textContent = item.designer ? 'Design: ' + item.designer : '';
+  document.getElementById('lb-desc').textContent = item.description || '';
+  document.getElementById('lb-cat').textContent = item.category === 'exterior' ? 'Exterior' : item.category === 'arquitectonica' ? 'Architectural' : 'Interior';
+  var linkEl = document.getElementById('lb-link');
+  if (item.link) { linkEl.href = item.link; linkEl.style.display = 'inline'; }
+  else { linkEl.style.display = 'none'; }
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function closeLightbox(e) {
-  if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
 
 function openNewsletter() {
   document.getElementById('nl-overlay').classList.add('open');
@@ -365,10 +308,10 @@ function closeNLModal(e) {
 
 function subscribeNewsletter() {
   var email = document.getElementById('nl-email').value.trim();
-  if (!email || !email.includes('@')) { showToast('Email no válido'); return; }
-  localStorage.setItem('lr_subscribed', '1');
+  if (!email || !email.includes('@')) { showToast('Invalid email'); return; }
+  localStorage.setItem('fffarchive_sub', '1');
   closeNLModal();
-  showToast('¡Gracias por suscribirte! ✓');
+  showToast('Thank you for subscribing ✓');
 }
 
 function showToast(msg) {
@@ -377,12 +320,10 @@ function showToast(msg) {
   setTimeout(function() { t.classList.remove('show'); }, 3000);
 }
 
-// Show newsletter modal after 10s if not subscribed
-if (!localStorage.getItem('lr_subscribed')) {
-  setTimeout(openNewsletter, 10000);
+if (!localStorage.getItem('fffarchive_sub')) {
+  setTimeout(openNewsletter, 12000);
 }
 
-// Load gallery
 loadGallery();
 </script>
 </body>
