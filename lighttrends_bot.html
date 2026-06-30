@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LightTrends Bot</title>
+<title>000-FFFarchive</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -127,9 +127,9 @@ textarea{width:100%;padding:16px;border:none;font-size:13px;background:white;col
         <path d="M4 8H2M18 8h-2M5.5 3.5l-1-1M15.5 3.5l1-1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
-    <span class="topbar-name">LightTrends Bot</span>
+    <span class="topbar-name">000-FFFarchive</span>
   </div>
-  <span class="topbar-badge">Newsletter de iluminación</span>
+  <span class="topbar-badge">Newsletter · Archivo de iluminación</span>
 </div>
 
 <div class="tabs-bar">
@@ -496,14 +496,14 @@ function renderNewsletter() {
       '</div></div>';
   }).join('');
   document.getElementById('nl-body').innerHTML =
-    '<div class="nl-eyebrow">LightTrends · Newsletter semanal</div>' +
+    '<div class="nl-eyebrow">000-FFFarchive · Newsletter semanal</div>' +
     '<div class="nl-main-title">Tendencias en<br>Iluminación</div>' +
     '<div class="nl-date-line">' + (reportData.date || '') + '</div>' +
     '<div class="nl-rule"></div>' +
     '<div class="nl-intro-text">' + (reportData.intro || '') + '</div>' +
     '<div class="nl-section-lbl">Productos y tendencias de la semana</div>' +
     postsHTML +
-    '<div class="nl-footer-block">Generado por LightTrends Bot · Para darte de baja responde con "baja".</div>';
+    '<div class="nl-footer-block">Generado por 000-FFFarchive · Para darte de baja responde con "baja".</div>';
 }
 
 function addContact() {
@@ -574,7 +574,7 @@ async function publishToInstagram(post) {
   if (post.name) caption += '#' + post.name.toLowerCase().replace(/\s+/g, '') + '\n';
   if (post.designer) caption += '@' + post.designer.toLowerCase().replace(/\s+/g, '') + '\n';
   caption += '\n' + (post.description || '');
-  caption += '\n\n#lightreference #lighting #iluminacion #diseño #interiordesign';
+  caption += '\n\n#000FFFarchive #lighting #iluminacion #diseño #interiordesign #lightingdesign';
 
   var res = await fetch(INSTAGRAM_WEBHOOK, {
     method: 'POST',
@@ -622,7 +622,7 @@ async function publishAllToLinkedIn() {
     if (p.name) caption += p.name + '\n';
     if (p.designer) caption += 'Design: ' + p.designer + '\n';
     caption += '\n' + (p.description || '');
-    caption += '\n\n#lightreference #lighting #iluminacion #diseño #interiordesign';
+    caption += '\n\n#000FFFarchive #lighting #iluminacion #diseño #interiordesign #lightingdesign';
 
     var res = await fetch(LINKEDIN_WEBHOOK, {
       method: 'POST',
@@ -652,7 +652,7 @@ async function publishAllToPinterest() {
   for (var i = 0; i < withImage.length; i++) {
     var p = withImage[i];
     var caption = (p.description || '');
-    caption += '\n\n#lightreference #lighting #iluminacion #diseño #interiordesign';
+    caption += '\n\n#000FFFarchive #lighting #iluminacion #diseño #interiordesign #lightingdesign';
 
     var res = await fetch(PINTEREST_WEBHOOK, {
       method: 'POST',
