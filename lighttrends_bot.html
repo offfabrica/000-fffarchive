@@ -82,23 +82,25 @@ textarea{width:100%;padding:16px;border:none;font-size:13px;background:white;col
 .nl-frame-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#f9f8f5;border-bottom:0.5px solid #e0ddd5}
 .nl-frame-lbl{font-size:11px;font-weight:500;color:#888;letter-spacing:0.06em;text-transform:uppercase}
 .nl-body{padding:2.5rem 2rem}
-.nl-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#888;margin-bottom:8px}
-.nl-main-title{font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;line-height:1.15;margin-bottom:6px}
-.nl-date-line{font-size:13px;color:#888}
-.nl-rule{height:1px;background:#e0ddd5;margin:1.5rem 0}
-.nl-intro-text{font-size:14px;line-height:1.8;color:#444;margin-bottom:2rem}
-.nl-section-lbl{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:1rem}
-.nl-post{display:flex;gap:18px;padding:18px 0;border-bottom:0.5px solid #e0ddd5;align-items:flex-start}
-.nl-post:last-child{border-bottom:none}
-.nl-post-img{width:110px;height:82px;object-fit:cover;border-radius:8px;flex-shrink:0}
-.nl-post-ph{width:110px;height:82px;border-radius:8px;flex-shrink:0;background:#edeae3;display:flex;align-items:center;justify-content:center;font-size:22px;color:#bbb}
+.nl-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#999;margin-bottom:12px}
+.nl-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(28px,4vw,48px);letter-spacing:-0.04em;line-height:0.92;margin-bottom:8px}
+.nl-title em{font-style:italic;font-family:'DM Serif Display',serif;font-weight:400}
+.nl-date{font-size:12px;color:#999;letter-spacing:0.04em;margin-bottom:2rem}
+.nl-rule{height:1px;background:#e8e8e8;margin:1.5rem 0}
+.nl-intro{font-size:14px;line-height:1.8;color:#555;margin-bottom:2rem}
+.nl-section-lbl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:1.5rem}
+.nl-post{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid #e8e8e8;align-items:start}
+.nl-post:last-of-type{border-bottom:none}
+.nl-post-img{width:120px;height:90px;object-fit:cover;display:block;background:#f5f5f5}
+.nl-post-ph{width:120px;height:90px;background:#f5f5f5}
 .nl-post-content{flex:1;min-width:0}
-.nl-post-name{font-size:15px;font-weight:500;margin-bottom:2px}
-.nl-post-maker{font-size:12px;color:#888;margin-bottom:6px}
+.nl-post-name{font-size:15px;font-weight:600;letter-spacing:-0.02em;margin-bottom:2px}
+.nl-post-maker{font-size:12px;color:#999;margin-bottom:2px}
+.nl-post-designer{font-size:11px;color:#999;margin-bottom:8px;font-style:italic}
 .nl-post-desc{font-size:13px;color:#555;line-height:1.7;margin-bottom:8px}
-.nl-post-link{font-size:12px;color:#0F6E56;text-decoration:none}
-.nl-post-link:hover{text-decoration:underline}
-.nl-footer-block{margin-top:1.5rem;padding-top:1rem;border-top:0.5px solid #e0ddd5;font-size:12px;color:#aaa}
+.nl-post-link{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#0a0a0a;text-decoration:none;border-bottom:1px solid #0a0a0a;padding-bottom:1px}
+.nl-post-link:hover{opacity:0.5}
+.nl-footer-block{margin-top:1.5rem;padding-top:1rem;border-top:1px solid #e8e8e8;font-size:11px;color:#aaa}
 .send-block{background:white;border-radius:12px;border:0.5px solid #e0ddd5;padding:1.4rem;margin-top:1.5rem}
 .send-block-title{font-size:14px;font-weight:500;margin-bottom:14px}
 .email-row{display:flex;gap:8px;margin-bottom:10px}
@@ -510,25 +512,27 @@ function renderNewsletter() {
   document.getElementById('nl-post-count').textContent = approved.length + ' post' + (approved.length > 1 ? 's' : '');
   var postsHTML = approved.map(function(p) {
     var imgEl = p.image
-      ? '<img class="nl-post-img" src="' + p.image + '" alt="' + p.name + '" onerror="this.outerHTML=\'<div class=nl-post-ph>💡</div>\'">'
-      : '<div class="nl-post-ph">💡</div>';
+      ? '<img class="nl-post-img" src="' + p.image + '" alt="' + p.name + '" onerror="this.outerHTML=\'<div class=nl-post-ph></div>\'">'
+      : '<div class="nl-post-ph"></div>';
     return '<div class="nl-post">' + imgEl +
       '<div class="nl-post-content">' +
       '<div class="nl-post-name">' + p.name + '</div>' +
       '<div class="nl-post-maker">' + (p.maker || '') + '</div>' +
+      (p.designer ? '<div class="nl-post-designer">' + p.designer + '</div>' : '') +
       '<div class="nl-post-desc">' + (p.description || '') + '</div>' +
-      (p.link ? '<a class="nl-post-link" href="' + p.link + '" target="_blank">→ Ver producto</a>' : '') +
+      (p.link ? '<a class="nl-post-link" href="' + p.link + '" target="_blank">View product →</a>' : '') +
       '</div></div>';
   }).join('');
   document.getElementById('nl-body').innerHTML =
-    '<div class="nl-eyebrow">000-FFFarchive · Newsletter semanal</div>' +
-    '<div class="nl-main-title">Tendencias en<br>Iluminación</div>' +
-    '<div class="nl-date-line">' + (reportData.date || '') + '</div>' +
+    '<div class="nl-eyebrow">000-FFFarchive · Weekly newsletter</div>' +
+    '<div class="nl-title">Lighting<br><em>Trends</em></div>' +
+    '<div class="nl-date">' + (reportData.date || '') + '</div>' +
     '<div class="nl-rule"></div>' +
-    '<div class="nl-intro-text">' + (reportData.intro || '') + '</div>' +
-    '<div class="nl-section-lbl">Productos y tendencias de la semana</div>' +
+    '<div class="nl-intro">' + (reportData.intro || '') + '</div>' +
+    '<div class="nl-section-lbl">Products &amp; trends this week</div>' +
     postsHTML +
-    '<div class="nl-footer-block">Generado por 000-FFFarchive · Para darte de baja responde con "baja".</div>';
+    '<div class="nl-rule"></div>' +
+    '<div style="font-size:11px;color:#999">000-FFFarchive · To unsubscribe reply "baja".</div>';
 }
 
 function addContact() {
@@ -564,21 +568,99 @@ function copyText() {
 }
 
 function exportNewsletter() {
-  // Format: news28042026
   var nowDate = new Date();
   var dd = String(nowDate.getDate()).padStart(2, '0');
   var mm = String(nowDate.getMonth() + 1).padStart(2, '0');
   var yyyy = nowDate.getFullYear();
   var filename = 'news' + dd + mm + yyyy + '.html';
-  var body = document.getElementById('nl-body').innerHTML;
-  var html = '<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="UTF-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n<title>LightTrends · ' + (reportData && reportData.date ? reportData.date : '') + '</title>\n<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>\n<style>\nbody{font-family:\'DM Sans\',sans-serif;background:#f4f2ed;color:#1a1a18;margin:0;padding:2rem}\n.nl-body{max-width:680px;margin:0 auto;background:white;padding:2.5rem 2rem;border-radius:12px}\n.nl-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#888;margin-bottom:8px}\n.nl-main-title{font-family:\'DM Serif Display\',serif;font-size:30px;font-weight:400;line-height:1.15;margin-bottom:6px}\n.nl-date-line{font-size:13px;color:#888}\n.nl-rule{height:1px;background:#e0ddd5;margin:1.5rem 0}\n.nl-intro-text{font-size:14px;line-height:1.8;color:#444;margin-bottom:2rem}\n.nl-section-lbl{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:1rem}\n.nl-post{display:flex;gap:18px;padding:18px 0;border-bottom:0.5px solid #e0ddd5;align-items:flex-start}\n.nl-post:last-child{border-bottom:none}\n.nl-post-img{width:110px;height:82px;object-fit:cover;border-radius:8px;flex-shrink:0}\n.nl-post-ph{width:110px;height:82px;border-radius:8px;flex-shrink:0;background:#edeae3;display:flex;align-items:center;justify-content:center;font-size:22px;color:#bbb}\n.nl-post-content{flex:1;min-width:0}\n.nl-post-name{font-size:15px;font-weight:500;margin-bottom:2px}\n.nl-post-maker{font-size:12px;color:#888;margin-bottom:6px}\n.nl-post-desc{font-size:13px;color:#555;line-height:1.7;margin-bottom:8px}\n.nl-post-link{font-size:12px;color:#0F6E56;text-decoration:none}\n.nl-footer-block{margin-top:1.5rem;padding-top:1rem;border-top:0.5px solid #e0ddd5;font-size:12px;color:#aaa}\n</style>\n</head>\n<body>\n<div class="nl-body">' + body + '</div>\n</body>\n</html>';
+  var date = reportData && reportData.date ? reportData.date : '';
+  var intro = reportData && reportData.intro ? reportData.intro : '';
+
+  var approved = (reportData ? reportData.posts : []).filter(function(_, i) { return postStates[i] === 'approved'; });
+  var postsHTML = approved.map(function(p) {
+    var imgEl = p.image
+      ? '<img class="nl-post-img" src="' + p.image + '" alt="' + (p.name||'') + '" onerror="this.style.display=\'none\'">'
+      : '<div class="nl-post-ph"></div>';
+    return '<div class="nl-post">' + imgEl +
+      '<div class="nl-post-content">' +
+      '<div class="nl-post-name">' + (p.name||'') + '</div>' +
+      '<div class="nl-post-maker">' + (p.maker||'') + '</div>' +
+      (p.designer ? '<div class="nl-post-designer">' + p.designer + '</div>' : '') +
+      '<div class="nl-post-desc">' + (p.description||'') + '</div>' +
+      (p.link ? '<a class="nl-post-link" href="' + p.link + '" target="_blank">View product →</a>' : '') +
+      '</div></div>';
+  }).join('');
+
+  var html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>000-FFFarchive · ${date}</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#ffffff;--ink:#0a0a0a;--ink-mid:#555;--ink-light:#999;--border:#e8e8e8;--border-strong:#1a1a1a}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+.header{padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:white}
+.header-nav{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:12px;color:var(--ink-light);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase}
+.nav-link:hover{color:var(--ink)}
+.nl-wrap{max-width:680px;margin:0 auto;padding:4rem 2rem 6rem}
+.nl-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px}
+.nl-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(36px,6vw,64px);letter-spacing:-0.04em;line-height:0.92;margin-bottom:8px}
+.nl-title em{font-style:italic;font-family:'DM Serif Display',serif;font-weight:400}
+.nl-date{font-size:12px;color:var(--ink-light);letter-spacing:0.04em;margin-bottom:2rem}
+.nl-rule{height:1px;background:var(--border);margin:2rem 0}
+.nl-intro{font-size:15px;line-height:1.8;color:var(--ink-mid);margin-bottom:2.5rem}
+.nl-section-lbl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1.5rem}
+.nl-post{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);align-items:start}
+.nl-post:last-of-type{border-bottom:none}
+.nl-post-img{width:120px;height:90px;object-fit:cover;display:block;background:#f5f5f5}
+.nl-post-ph{width:120px;height:90px;background:#f5f5f5}
+.nl-post-name{font-size:16px;font-weight:600;letter-spacing:-0.02em;margin-bottom:2px}
+.nl-post-maker{font-size:12px;color:var(--ink-light);margin-bottom:2px}
+.nl-post-designer{font-size:11px;color:var(--ink-light);margin-bottom:10px;font-style:italic}
+.nl-post-desc{font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:10px}
+.nl-post-link{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px}
+.footer{border-top:1px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between}
+.footer-right{font-size:11px;color:var(--ink-light)}
+.footer-right a{color:inherit}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="index.html"><img src="logo.png" alt="000-FFFarchive" style="height:22px;display:block"/></a>
+  <nav class="header-nav">
+    <a href="index.html" class="nav-link">Archive</a>
+    <a href="issue.html" class="nav-link">Issues</a>
+  </nav>
+</header>
+<div class="nl-wrap">
+  <div class="nl-eyebrow">000-FFFarchive · Weekly newsletter</div>
+  <div class="nl-title">Lighting<br><em>Trends</em></div>
+  <div class="nl-date">${date}</div>
+  <div class="nl-rule"></div>
+  <div class="nl-intro">${intro}</div>
+  <div class="nl-section-lbl">Products &amp; trends this week</div>
+  ${postsHTML}
+  <div class="nl-rule"></div>
+  <div style="font-size:11px;color:var(--ink-light)">000-FFFarchive · To unsubscribe reply "baja".</div>
+</div>
+<footer class="footer">
+  <div><img src="logo.png" alt="000-FFFarchive" style="height:16px;display:block"/></div>
+  <div class="footer-right"><a href="issue.html">All issues</a> · <a href="index.html">Archive</a></div>
+</footer>
+</body>
+</html>`;
+
   var blob = new Blob([html], { type: 'text/html' });
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = filename;
   a.click();
   URL.revokeObjectURL(a.href);
-  showToast('Newsletter exportado: ' + filename);
+  showToast('Exportado: ' + filename);
 }
 
 function saveLink(i) {
