@@ -84,7 +84,7 @@ textarea{width:100%;padding:16px;border:none;font-size:13px;background:white;col
 .nl-body{padding:2.5rem 2rem}
 .nl-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#999;margin-bottom:12px}
 .nl-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(28px,4vw,48px);letter-spacing:-0.04em;line-height:0.92;margin-bottom:8px}
-.nl-title em{font-style:italic;font-family:'DM Serif Display',serif;font-weight:400}
+
 .nl-date{font-size:12px;color:#999;letter-spacing:0.04em;margin-bottom:2rem}
 .nl-rule{height:1px;background:#e8e8e8;margin:1.5rem 0}
 .nl-intro{font-size:14px;line-height:1.8;color:#555;margin-bottom:2rem}
@@ -524,7 +524,7 @@ function renderNewsletter() {
   }).join('');
   document.getElementById('nl-body').innerHTML =
     '<div class="nl-eyebrow">000-FFFarchive · Weekly newsletter</div>' +
-    '<div class="nl-title">Lighting<br><em>Trends</em></div>' +
+    '<div class="nl-title">Light<br>News</div>' +
     '<div class="nl-date">' + (reportData.date || '') + '</div>' +
     '<div class="nl-rule"></div>' +
     '<div class="nl-intro">' + (reportData.intro || '') + '</div>' +
@@ -610,7 +610,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .nl-wrap{max-width:680px;margin:0 auto;padding:4rem 2rem 6rem}
 .nl-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px}
 .nl-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(36px,6vw,64px);letter-spacing:-0.04em;line-height:0.92;margin-bottom:8px}
-.nl-title em{font-style:italic;font-family:'DM Serif Display',serif;font-weight:400}
+
 .nl-date{font-size:12px;color:var(--ink-light);letter-spacing:0.04em;margin-bottom:2rem}
 .nl-rule{height:1px;background:var(--border);margin:2rem 0}
 .nl-intro{font-size:15px;line-height:1.8;color:var(--ink-mid);margin-bottom:2.5rem}
@@ -639,7 +639,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 </header>
 <div class="nl-wrap">
   <div class="nl-eyebrow">000-FFFarchive · Weekly newsletter</div>
-  <div class="nl-title">Lighting<br><em>Trends</em></div>
+  <div class="nl-title">Light<br>News</div>
   <div class="nl-date">${date}</div>
   <div class="nl-rule"></div>
   <div class="nl-intro">${intro}</div>
